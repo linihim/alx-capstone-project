@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const RecipeDetails = ({ recipe }) => {
   const ingredients = Object.keys(recipe)
@@ -26,7 +26,34 @@ const RecipeDetails = ({ recipe }) => {
         <h2 className="text-xl font-semibold mb-2">Instructions:</h2>
         <p className="whitespace-pre-line">{recipe.strInstructions}</p>
       </div>
+      {recipe.strYoutube && (
+        <div className="mb-4">
+          <h2 className="text-xl font-semibold mb-2">Video Tutorial:</h2>
+          <iframe
+            width="100%"
+            height="315"
+            src={`https://www.youtube.com/embed/${recipe.strYoutube.split('v=')[1]}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      )}
+      {recipe.strSource && (
+        <div>
+          <h2 className="text-xl font-semibold mb-2">Source:</h2>
+          
+          <a href={recipe.strSource}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline">
+            View Original Recipe
+          </a>
+        </div>
+      )}
     </div>
+    
   );
 };
 
