@@ -20,4 +20,14 @@ export const getRecipeById = async (id) => {
     console.error('Error fetching recipe details:', error);
     throw error;
   }
+};  
+
+export const getRandomRecipe = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/random.php`);
+      return response.data.meals[0];
+    } catch (error) {
+      console.error('Error fetching random recipe:', error);
+      throw error;
+    }
 };
